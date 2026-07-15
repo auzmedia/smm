@@ -37,8 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const msgDiv = document.getElementById('formMsg');
     
     // GOOGLE APPS SCRIPT WEB APP URL (Quyidagi 5-qadamdagi havolani shu yerga qo'yasiz)
-    const SCRIPT_URL = 'https://script.google.com/macros/s/SIZNING_URL_MANZILINGIZ/exec';
-
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxaZ4955BWrKABon9S4s30FqtUHyh-XOtD9XKyIFAAQqLQ2uayYjPtnnRBRB287UE369g/exec';
     // Sana formatini DD/MM/YYYY - HH:MM ko'rinishiga keltirish
     function formatDate(dateString) {
         const d = new Date(dateString);
