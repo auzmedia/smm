@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marjon Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="header">
+        <div class="container header-flex">
+            <div class="logo">Marjon Hotel</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about" data-i18n="navAbout">Haqida</a></li>
+                    <li><a href="#rooms" data-i18n="navRooms">Xonalar</a></li>
+                    <li><a href="#amenities" data-i18n="navAmenities">Qulayliklar</a></li>
+                    <li><a href="#reviews" data-i18n="navReviews">Sharhlar</a></li>
+                    <li><a href="#contact" data-i18n="navContact">Aloqa</a></li>
+                </ul>
+            </nav>
+            <div class="controls">
+                <select id="langSwitcher">
+                    <option value="uz">UZ</option>
+                    <option value="ru">RU</option>
+                    <option value="en">EN</option>
+                </select>
+                <button id="themeToggle" class="theme-btn">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="slider">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1566073171589-7fa570158473?q=80&w=1920&auto=format&fit=crop');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1920&auto=format&fit=crop');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542314831-c6a4d14d8c85?q=80&w=1920&auto=format&fit=crop');"></div>
+        </div>
+        <div class="hero-content">
+            <h1 data-i18n="heroTitle">Marjon Hotelga Xush Kelibsiz</h1>
+            <p data-i18n="heroDesc">Sizning qulayligingiz - bizning oliy maqsadimiz.</p>
+            <a href="#booking" class="btn" data-i18n="btnBook">Band qilish</a>
+        </div>
+    </section>
+
+    <section id="stats" class="container section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>5000+</h3>
+                <p data-i18n="statGuests">Mamnun mijozlar</p>
+            </div>
+            <div class="stat-card">
+                <h3>50+</h3>
+                <p data-i18n="statRooms">Shinam xonalar</p>
+            </div>
+            <div class="stat-card">
+                <h3>10+</h3>
+                <p data-i18n="statYears">Yillik tajriba</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container section">
+        <h2 class="section-title" data-i18n="whyUs">Nega bizni tanlashadi?</h2>
+        <div class="features-grid">
+            <div class="card">
+                <h3 data-i18n="feat1Title">Markaziy joylashuv</h3>
+                <p data-i18n="feat1Desc">Shaharning eng qulay qismida joylashganmiz.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="feat2Title">24/7 Xizmat</h3>
+                <p data-i18n="feat2Desc">Istalgan vaqtda sizning xizmatingizdamiz.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="feat3Title">Yuqori Xavfsizlik</h3>
+                <p data-i18n="feat3Desc">Kuzatuv kameralari va xavfsizlik xizmati.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="rooms" class="container section">
+        <h2 class="section-title" data-i18n="roomsTitle">Xonalar Paketi</h2>
+        <div class="rooms-grid">
+            <div class="card room-card">
+                <h3 data-i18n="roomStandard">Standart</h3>
+                <p data-i18n="roomStandardDesc">1 kishilik shinam xona, barcha asosiy qulayliklar bilan.</p>
+                <div class="price">$50 / kun</div>
+            </div>
+            <div class="card room-card">
+                <h3 data-i18n="roomVip">VIP</h3>
+                <p data-i18n="roomVipDesc">Keng xona, ajoyib manzara va qo'shimcha xizmatlar.</p>
+                <div class="price">$100 / kun</div>
+            </div>
+            <div class="card room-card">
+                <h3 data-i18n="roomPremium">Premium</h3>
+                <p data-i18n="roomPremiumDesc">Eng yuqori darajadagi lyuks xona, shaxsiy xizmat ko'rsatish.</p>
+                <div class="price">$200 / kun</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="amenities" class="container section dual-section">
+        <div class="half">
+            <h2 class="section-title" data-i18n="amenitiesTitle">Qulayliklar</h2>
+            <ul class="list">
+                <li data-i18n="am1">✔️ Bepul Wi-Fi</li>
+                <li data-i18n="am2">✔️ Hovuz va Spa</li>
+                <li data-i18n="am3">✔️ Bepul nonushta</li>
+                <li data-i18n="am4">✔️ Fitnes zal</li>
+            </ul>
+        </div>
+        <div class="half">
+            <h2 class="section-title" data-i18n="staffTitle">Bizning Jamoa</h2>
+            <p data-i18n="staffDesc">Professional va o'z ishining ustasi bo'lgan jamoamiz sizning xizmatingizda.</p>
+        </div>
+    </section>
+
+    <section id="reviews" class="container section">
+        <h2 class="section-title" data-i18n="reviewsTitle">Mijozlar Fikri</h2>
+        <div class="reviews-grid">
+            <div class="card">
+                <p>"Marjon Hotelda dam olish ajoyib bo'ldi. Xizmat ko'rsatish alo darajada!"</p>
+                <h4>- Alisher T.</h4>
+            </div>
+            <div class="card">
+                <p>"Juda toza va tinch joy. Nonushta ayniqsa yoqdi."</p>
+                <h4>- Malika R.</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container section form-map-section">
+        <div class="form-container" id="booking">
+            <h2 data-i18n="bookTitle">Xona Buyurtma Qilish</h2>
+            <form id="bookingForm">
+                <input type="text" id="name" required placeholder="Ism Familiya" data-i18n-placeholder="formName">
+                <input type="tel" id="phone" required placeholder="+998901234567" pattern="^\+998[0-9]{9}$" title="Format: +998901234567">
+                
+                <select id="roomType" required>
+                    <option value="Standart" data-i18n="roomStandard">Standart</option>
+                    <option value="VIP" data-i18n="roomVip">VIP</option>
+                    <option value="Premium" data-i18n="roomPremium">Premium</option>
+                </select>
+
+                <label data-i18n="formArrive">Kelish vaqti:</label>
+                <input type="datetime-local" id="arriveDate" required>
+
+                <label data-i18n="formDepart">Ketish vaqti:</label>
+                <input type="datetime-local" id="departDate" required>
+
+                <textarea id="comment" rows="4" placeholder="Izoh..." data-i18n-placeholder="formComment"></textarea>
+                
+                <button type="submit" class="btn" data-i18n="btnSubmit">Yuborish</button>
+                <div id="formMsg"></div>
+            </form>
+        </div>
+        <div class="map-container">
+            <iframe src="https://maps.google.com/maps?q=Osh,Kyrgyzstan&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <h3 data-i18n="footerAddressTitle">Manzil</h3>
+                <p data-i18n="footerAddress">O'sh shahri, Markaziy ko'cha 12</p>
+            </div>
+            <div>
+                <h3 data-i18n="footerContactTitle">Aloqa</h3>
+                <p>Tel: +998 90 123 45 67</p>
+                <p>Email: info@marjonhotel.com</p>
+            </div>
+            <div>
+                <h3 data-i18n="footerSocialTitle">Tarmoqlar</h3>
+                <p>Telegram | Instagram | Facebook</p>
+            </div>
+        </div>
+        <div class="copy">
+            &copy; 2026 Marjon Hotel. Barcha huquqlar himoyalangan.
+        </div>
+    </footer>
+
+    <script src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+  </html>
+  
