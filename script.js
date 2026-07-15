@@ -1,6 +1,6 @@
 // ========== CONFIGURATION ==========
 // Faqat Google Apps Script URL'si kerak, tokenlar backendda saqlanadi
-const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0rcK4AaaZdyXZP6VJPWThPy4s42DDd-X7fPPbcEhJLTfPbz4i2AfQSoRuNmoqEA-Gkw/exec';
+const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzuiYJPkjtgMRlCfaroXX_RasCUImc5edfp3X0xBkkFkdHpUlxEHhNGPg3DqmnI129OOw/exec';
 
 // Buyurtma hisoblagichi
 let orderCounter = 1;
