@@ -149,46 +149,59 @@
         </div>
     </section>
 
-    <!-- Contact Form + Map -->
-    <section class="contact-form-section" id="contact-form">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="form-card animate-on-scroll">
-                    <h2 class="section-title" style="text-align:left; font-size:2rem;" data-i18n="form.title">Запишитесь на приём</h2>
-                    <p style="color:var(--text-secondary); margin-bottom:28px;" data-i18n="form.subtitle">Оставьте заявку, и мы перезвоним вам в течение 5 минут</p>
-                    <form id="appointmentForm">
-                        <div class="form-group">
-                            <label class="form-label" for="name" data-i18n="form.name">Ваше имя</label>
-                            <input type="text" id="name" class="form-input" required placeholder="Иван Иванов">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="phone" data-i18n="form.phone">Ваш телефон</label>
-                            <input type="tel" id="phone" class="form-input" required placeholder="+7 (___) ___-__-__">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="service" data-i18n="form.service">Выберите услугу</label>
-                            <select id="service" class="form-select" required>
-                                <option value="" data-i18n="form.service">Выберите услугу</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="form-submit" data-i18n="form.button">Записаться</button>
-                    </form>
-                    <div class="form-success" id="formSuccess">
-                        <i class="fas fa-check-circle"></i>
-                        <span data-i18n="form.success">Спасибо! Мы свяжемся с вами в ближайшее время.</span>
+<!-- Contact Form + Map -->
+<section class="contact-form-section" id="contact-form">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="form-card animate-on-scroll">
+                <h2 class="section-title" style="text-align:left; font-size:2rem;" data-i18n="form.title">Запишитесь на приём</h2>
+                <p style="color:var(--text-secondary); margin-bottom:28px;" data-i18n="form.subtitle">Оставьте заявку, и мы перезвоним вам в течение 5 минут</p>
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name" data-i18n="form.name">Ваше имя</label>
+                        <input type="text" id="name" class="form-input" required placeholder="Иван Иванов">
                     </div>
-                </div>
-                <div class="map-container animate-on-scroll">
-                    <div class="map-placeholder">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <p style="font-weight:600; font-size:1.1rem;">2ГИС Карта</p>
-                        <p style="font-size:0.9rem;">г. Москва, ул. Примерная, д. 123</p>
-                        <p style="font-size:0.85rem; color:var(--text-muted);">Интерактивная карта загружается здесь</p>
+                    <div class="form-group">
+                        <label class="form-label" for="phone" data-i18n="form.phone">Ваш телефон</label>
+                        <input type="tel" id="phone" class="form-input" required placeholder="+996 (___) ___-___">
                     </div>
+                    <div class="form-group">
+                        <label class="form-label" for="service" data-i18n="form.service">Выберите услугу</label>
+                        <select id="service" class="form-select" required>
+                            <option value="" data-i18n="form.service">Выберите услугу</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="form-submit" data-i18n="form.button">Записаться</button>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <i class="fas fa-check-circle"></i>
+                    <span data-i18n="form.success">Спасибо! Мы свяжемся с вами в ближайшее время.</span>
                 </div>
             </div>
+            <!-- 2GIS Map iframe - O'sh -->
+            <div class="map-container animate-on-scroll">
+                <a class="dg-widget-link" href="https://2gis.kg/osh/firm/70000001039315109/center/72.808284,40.530168/zoom/16?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть на карте Оша</a>
+                <div class="dg-widget-link">
+                    <a href="https://2gis.kg/osh/firm/70000001039315109/photos/70000001039315109/center/72.808284,40.530168/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos">Фотографии компании</a>
+                </div>
+                <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
+                <script charset="utf-8">
+                    new DGWidgetLoader({
+                        width: '100%',
+                        height: '500',
+                        borderColor: 'transparent',
+                        pos: { lat: 40.530168, lon: 72.808284, zoom: 16 },
+                        opt: { city: 'osh' },
+                        org: [{ id: '70000001039315109' }]
+                    });
+                </script>
+                <noscript style="color:#c00;font-size:16px;font-weight:bold;">
+                    Виджет карты требует JavaScript.
+                </noscript>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Contacts Section -->
     <section class="contacts" id="contacts">
