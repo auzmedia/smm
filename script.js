@@ -1,293 +1,312 @@
-// Google Apps Script URL
-const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxyrr3UWsPypFPNtHZfcmCgyBF9dQvYhv6RpMvfRRf4K8hgjAMjIt36yotwD-StAQmB3Q/exec';
+        (function() {
+            // ============ State ============
+            let currentLang = localStorage.getItem('lang') || 'ru';
+            let currentTheme = localStorage.getItem('theme') || 'light';
 
-let orderCounter = 1;
+            // ============ DOM References ============
+            const header = document.getElementById('header');
+            const themeToggle = document.getElementById('themeToggle');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileClose = document.getElementById('mobileClose');
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('overlay');
+            const langBtns = document.querySelectorAll('.lang-btn');
+            const appointmentForm = document.getElementById('appointmentForm');
+            const formSuccess = document.getElementById('formSuccess');
 
-document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
-    initLanguage();
-    initNavigation();
-    initSwiper();
-    initStatsCounter();
-    initBookingForm();
-    initSmoothScroll();
-});
-
-// ========== THEME ==========
-function initTheme() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const icon = themeToggle.querySelector('i');
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    
-    themeToggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const newTheme = current === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    });
-}
-
-// ========== LANGUAGE ==========
-function initLanguage() {
-    const langButtons = document.querySelectorAll('.lang-btn');
-    const savedLang = localStorage.getItem('language') || 'uz';
-    setLanguage(savedLang);
-    
-    langButtons.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.lang === savedLang) btn.classList.add('active');
-        
-        btn.addEventListener('click', () => {
-            const lang = btn.dataset.lang;
-            setLanguage(lang);
-            localStorage.setItem('language', lang);
-            langButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-}
-
-function setLanguage(lang) {
-    document.querySelectorAll('[data-lang]').forEach(element => {
-        const key = element.dataset.lang;
-        if (translations[lang] && translations[lang][key]) {
-            element.textContent = translations[lang][key];
-        }
-    });
-    document.documentElement.lang = lang;
-}
-
-// ========== NAVIGATION ==========
-function initNavigation() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navList = document.querySelector('.nav__list');
-    
-    navToggle.addEventListener('click', () => {
-        navList.classList.toggle('active');
-        navToggle.querySelector('i').className = navList.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
-    });
-    
-    document.querySelectorAll('.nav__link').forEach(link => {
-        link.addEventListener('click', () => {
-            navList.classList.remove('active');
-            navToggle.querySelector('i').className = 'fas fa-bars';
-        });
-    });
-}
-
-// ========== SWIPER ==========
-function initSwiper() {
-    new Swiper('.hero-swiper', {
-        slidesPerView: 1, loop: true,
-        autoplay: { delay: 5000, disableOnInteraction: false },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        effect: 'fade', fadeEffect: { crossFade: true }
-    });
-    
-    new Swiper('.reviews-swiper', {
-        slidesPerView: 1, spaceBetween: 30, loop: true,
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-    });
-}
-
-// ========== STATS COUNTER ==========
-function initStatsCounter() {
-    const stats = document.querySelectorAll('.stat__number');
-    let animated = false;
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !animated) {
-                animated = true;
-                stats.forEach(stat => {
-                    const target = parseInt(stat.dataset.target);
-                    const duration = 2000;
-                    const step = target / (duration / 16);
-                    let current = 0;
-                    
-                    const update = () => {
-                        current += step;
-                        if (current < target) {
-                            stat.textContent = Math.floor(current);
-                            requestAnimationFrame(update);
-                        } else {
-                            stat.textContent = target;
-                        }
-                    };
-                    update();
-                });
+            // ============ Theme ============
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                const icon = themeToggle.querySelector('i');
+                if (theme === 'dark') {
+                    icon.className = 'fas fa-sun';
+                } else {
+                    icon.className = 'fas fa-moon';
+                }
+                localStorage.setItem('theme', theme);
+                currentTheme = theme;
             }
-        });
-    });
-    
-    const statsSection = document.querySelector('.stats');
-    if (statsSection) observer.observe(statsSection);
-}
 
-// ========== BOOKING FORM ==========
-function initBookingForm() {
-    const form = document.getElementById('booking-form');
-    
-    // Room card buttons
-    document.querySelectorAll('.book-room').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.getElementById('room-type').value = btn.dataset.room;
-            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-    
-    // Form submit
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Get form data
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const roomType = document.getElementById('room-type').value;
-        const checkIn = document.getElementById('check-in').value;
-        const checkOut = document.getElementById('check-out').value;
-        const comment = document.getElementById('comment').value.trim();
-        
-        // Validation
-        if (!name || name.length < 3) {
-            showMessage('Iltimos, ism familiyangizni to\'liq kiriting!', 'error');
-            return;
-        }
-        
-        const phoneRegex = /^\+998[0-9]{9}$/;
-        if (!phoneRegex.test(phone)) {
-            showMessage('Telefon raqam +998901234567 formatida bo\'lishi kerak!', 'error');
-            return;
-        }
-        
-        if (!roomType) {
-            showMessage('Iltimos, xona turini tanlang!', 'error');
-            return;
-        }
-        
-        if (!checkIn || !checkOut) {
-            showMessage('Iltimos, sana va vaqtni tanlang!', 'error');
-            return;
-        }
-        
-        if (new Date(checkOut) <= new Date(checkIn)) {
-            showMessage('Ketish sanasi kelish sanasidan keyin bo\'lishi kerak!', 'error');
-            return;
-        }
-        
-        // Show loading
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Yuborilmoqda...';
-        submitBtn.disabled = true;
-        
-        try {
-            // Format date
-            const formatDate = (dateStr) => {
-                if (!dateStr) return '';
-                const d = new Date(dateStr);
-                const day = String(d.getDate()).padStart(2, '0');
-                const month = String(d.getMonth() + 1).padStart(2, '0');
-                const year = d.getFullYear();
-                const hours = String(d.getHours()).padStart(2, '0');
-                const minutes = String(d.getMinutes()).padStart(2, '0');
-                return `${day}/${month}/${year} - ${hours}:${minutes}`;
-            };
-            
-            // Prepare data
-            const data = {
-                orderId: `#${orderCounter}`,
-                name: name,
-                phone: phone,
-                roomType: roomType,
-                checkIn: formatDate(checkIn),
-                checkOut: formatDate(checkOut),
-                comment: comment || 'Izoh qoldirilmagan',
-                timestamp: new Date().toISOString()
-            };
-            
-            console.log('📤 Yuborilmoqda:', data);
-            
-            // Send to Google Apps Script
-            const response = await fetch(APP_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: JSON.stringify(data)
+            applyTheme(currentTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(newTheme);
             });
-            
-            console.log('✅ Javob:', response);
-            
-            showMessage('✅ Buyurtmangiz qabul qilindi! Tez orada bog\'lanamiz.', 'success');
-            form.reset();
-            orderCounter++;
-            
-        } catch (error) {
-            console.error('❌ Xatolik:', error);
-            showMessage('❌ Xatolik yuz berdi. Iltimos, telefon orqali bog\'laning: +998 90 123 45 67', 'error');
-        } finally {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
-    });
-}
 
-// ========== MESSAGE DISPLAY ==========
-function showMessage(message, type) {
-    const msgDiv = document.getElementById('form-message');
-    msgDiv.textContent = message;
-    msgDiv.style.display = 'block';
-    msgDiv.style.background = type === 'success' ? '#4CAF50' : '#f44336';
-    msgDiv.style.color = 'white';
-    
-    setTimeout(() => {
-        msgDiv.style.display = 'none';
-    }, 5000);
-}
+            // ============ Language ============
+            function getTranslation(path) {
+                const keys = path.split('.');
+                let result = translations[currentLang];
+                for (const key of keys) {
+                    if (result && result[key] !== undefined) {
+                        result = result[key];
+                    } else {
+                        return path;
+                    }
+                }
+                return result;
+            }
 
-// ========== SMOOTH SCROLL ==========
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
+            function updateContent() {
+                // Update all elements with data-i18n attribute
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const path = el.getAttribute('data-i18n');
+                    const translation = getTranslation(path);
+                    if (typeof translation === 'string') {
+                        // For select options, only update if it's the default option
+                        if (el.tagName === 'OPTION' && el.value === '') {
+                            el.textContent = translation;
+                        } else if (el.tagName !== 'OPTION') {
+                            el.textContent = translation;
+                        }
+                    }
+                });
+
+                // Update placeholders
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                    const path = el.getAttribute('data-i18n-placeholder');
+                    el.placeholder = getTranslation(path);
+                });
+
+                // Rebuild dynamic sections
+                renderAdvantages();
+                renderServices();
+                renderTeam();
+                renderReviews();
+                renderFAQ();
+                renderServiceOptions();
+            }
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('lang', lang);
+                document.documentElement.lang = lang;
+
+                // Update lang buttons
+                langBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+
+                updateContent();
+            }
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setLanguage(btn.getAttribute('data-lang'));
+                });
+            });
+
+            // ============ Dynamic Rendering Functions ============
+            function renderAdvantages() {
+                const grid = document.getElementById('advantagesGrid');
+                const items = translations[currentLang].advantages.items;
+                grid.innerHTML = items.map((item, i) => `
+                    <div class="advantage-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
+                        <div class="advantage-icon"><i class="fas ${item.icon}"></i></div>
+                        <h3 class="advantage-title">${item.title}</h3>
+                        <p class="advantage-desc">${item.desc}</p>
+                    </div>
+                `).join('');
+                observeAnimatedElements();
+            }
+
+            function renderServices() {
+                const grid = document.getElementById('servicesGrid');
+                const items = translations[currentLang].services.items;
+                grid.innerHTML = items.map((item, i) => `
+                    <div class="service-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
+                        <div class="service-icon"><i class="fas ${item.icon}"></i></div>
+                        <h3 class="service-title">${item.title}</h3>
+                        <p class="service-desc">${item.desc}</p>
+                    </div>
+                `).join('');
+                observeAnimatedElements();
+            }
+
+            function renderTeam() {
+                const grid = document.getElementById('teamGrid');
+                const members = translations[currentLang].team.members;
+                grid.innerHTML = members.map((member, i) => `
+                    <div class="team-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
+                        <div class="team-avatar"><i class="fas fa-user-md"></i></div>
+                        <h3 class="team-name">${member.name}</h3>
+                        <p class="team-role">${member.role}</p>
+                        <p class="team-exp">${member.exp}</p>
+                    </div>
+                `).join('');
+                observeAnimatedElements();
+            }
+
+            function renderReviews() {
+                const grid = document.getElementById('reviewsGrid');
+                const items = translations[currentLang].reviews.items;
+                grid.innerHTML = items.map((item, i) => `
+                    <div class="review-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
+                        <div class="review-stars">${'★'.repeat(item.rating)}${'☆'.repeat(5 - item.rating)}</div>
+                        <p class="review-text">"${item.text}"</p>
+                        <p class="review-author">— ${item.name}</p>
+                    </div>
+                `).join('');
+                observeAnimatedElements();
+            }
+
+            function renderFAQ() {
+                const list = document.getElementById('faqList');
+                const items = translations[currentLang].faq.items;
+                list.innerHTML = items.map((item, i) => `
+                    <div class="faq-item animate-on-scroll">
+                        <div class="faq-question">
+                            <span>${item.q}</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>${item.a}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Re-attach FAQ click handlers
+                list.querySelectorAll('.faq-question').forEach(q => {
+                    q.addEventListener('click', function() {
+                        const item = this.parentElement;
+                        const wasActive = item.classList.contains('active');
+                        // Close all
+                        list.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                        // Open clicked if wasn't active
+                        if (!wasActive) {
+                            item.classList.add('active');
+                        }
+                    });
+                });
+                observeAnimatedElements();
+            }
+
+            function renderServiceOptions() {
+                const select = document.getElementById('service');
+                const services = translations[currentLang].form.services;
+                const defaultOption = select.querySelector('option[value=""]');
+                const existingOptions = select.querySelectorAll('option:not([value=""])');
+                existingOptions.forEach(opt => opt.remove());
+
+                if (defaultOption) {
+                    defaultOption.textContent = getTranslation('form.service');
+                }
+
+                services.forEach(service => {
+                    const option = document.createElement('option');
+                    option.value = service;
+                    option.textContent = service;
+                    select.appendChild(option);
                 });
             }
-        });
-    });
-}
 
-// Scroll animations
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        const elements = document.querySelectorAll('.room-card, .why-card, .amenity-card, .staff-card');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+            // ============ Scroll Animation Observer ============
+            function observeAnimatedElements() {
+                const elements = document.querySelectorAll('.animate-on-scroll:not(.observed)');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            entry.target.classList.add('observed');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                elements.forEach(el => observer.observe(el));
+            }
+
+            // ============ Header Scroll Effect ============
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+            // ============ Mobile Menu ============
+            function openMobileMenu() {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+            mobileClose.addEventListener('click', closeMobileMenu);
+            overlay.addEventListener('click', closeMobileMenu);
+
+            // Close mobile menu when clicking on links
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // ============ Smooth Scroll for Anchor Links ============
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const headerHeight = header.offsetHeight + 16;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // ============ Form Submission ============
+            appointmentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const service = document.getElementById('service').value;
+
+                if (name && phone && service) {
+                    // Simulate submission
+                    appointmentForm.style.display = 'none';
+                    formSuccess.classList.add('show');
+
+                    // Reset after delay
+                    setTimeout(() => {
+                        appointmentForm.style.display = 'block';
+                        formSuccess.classList.remove('show');
+                        appointmentForm.reset();
+                    }, 5000);
+
+                    // Here you would send data to server
+                    console.log('Form submitted:', { name, phone, service });
                 }
             });
-        }, { threshold: 0.1 });
-        
-        elements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-    }, 100);
-});
+
+            // ============ Initialize ============
+            function init() {
+                setLanguage(currentLang);
+                updateContent();
+                observeAnimatedElements();
+                handleScroll();
+            }
+
+            // Run on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
