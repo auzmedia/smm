@@ -1,335 +1,402 @@
 <!DOCTYPE html>
-<html lang="uz" data-theme="light">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marjon Hotel - Premium mehmonxona</title>
+    <meta name="description" content="Премиальная стоматология Галерея Улыбок. Современное оборудование, опытные врачи, безболезненное лечение. Запишитесь на приём!">
+    <title>Галерея Улыбок | Премиальная стоматология</title>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo">
-                <i class="fas fa-hotel"></i> Marjon Hotel
-            </a>
-            
-            <ul class="nav__list">
-                <li class="nav__item"><a href="#home" class="nav__link" data-lang="nav_home">Bosh sahifa</a></li>
-                <li class="nav__item"><a href="#rooms" class="nav__link" data-lang="nav_rooms">Xonalar</a></li>
-                <li class="nav__item"><a href="#amenities" class="nav__link" data-lang="nav_amenities">Qulayliklar</a></li>
-                <li class="nav__item"><a href="#reviews" class="nav__link" data-lang="nav_reviews">Sharhlar</a></li>
-                <li class="nav__item"><a href="#contact" class="nav__link" data-lang="nav_contact">Aloqa</a></li>
-            </ul>
-            
-            <div class="nav__controls">
-                <div class="language-switcher">
-                    <button class="lang-btn" data-lang="uz">UZ</button>
-                    <button class="lang-btn" data-lang="ru">RU</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                </div>
-                
-                <button class="theme-toggle" id="theme-toggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                
-                <button class="nav__toggle" id="nav-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="swiper hero-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920" alt="Hotel 1">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920" alt="Hotel 2">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1920" alt="Hotel 3">
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-            
-            <div class="hero__content container">
-                <h1 class="hero__title" data-lang="hero_title">Marjon Hotel'ga xush kelibsiz</h1>
-                <p class="hero__subtitle" data-lang="hero_subtitle">Premium darajadagi xizmat va unutilmas dam olish</p>
-                <a href="#booking" class="btn btn--primary" data-lang="hero_btn">Bron qilish</a>
-            </div>
-        </section>
+    <style>
+        /* ============ CSS Variables (Themes) ============ */
+        :root {
+            /* Light Theme (Default) */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.75);
+            --bg-glass-hover: rgba(255, 255, 255, 0.9);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --accent-primary: #0d9488;
+            --accent-primary-hover: #0f766e;
+            --accent-secondary: #f59e0b;
+            --accent-gradient: linear-gradient(135deg, #0d9488, #14b8a6);
+            --border-color: rgba(226, 232, 240, 0.8);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.12);
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --hero-overlay: linear-gradient(135deg, rgba(13, 148, 136, 0.85), rgba(20, 184, 166, 0.7));
+            --card-bg: #ffffff;
+            --input-bg: #f1f5f9;
+            --input-border: #e2e8f0;
+            --tag-bg: #f0fdfa;
+            --tag-text: #0d9488;
+            --star-color: #f59e0b;
+            --footer-bg: #0f172a;
+            --footer-text: #cbd5e1;
+            --footer-heading: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-        <!-- Statistics -->
-        <section class="stats section">
-            <div class="container">
-                <div class="stats__grid">
-                    <div class="stat-card">
-                        <i class="fas fa-users stat__icon"></i>
-                        <div class="stat__number" data-target="5000">0</div>
-                        <p class="stat__label" data-lang="stats_guests">Mamnun mijozlar</p>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-door-open stat__icon"></i>
-                        <div class="stat__number" data-target="150">0</div>
-                        <p class="stat__label" data-lang="stats_rooms">Hashamatli xonalar</p>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-award stat__icon"></i>
-                        <div class="stat__number" data-target="25">0</div>
-                        <p class="stat__label" data-lang="stats_awards">Mukofotlar</p>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-calendar-check stat__icon"></i>
-                        <div class="stat__number" data-target="10">0</div>
-                        <p class="stat__label" data-lang="stats_years">Yillik tajriba</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-glass: rgba(30, 41, 59, 0.75);
+            --bg-glass-hover: rgba(30, 41, 59, 0.9);
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --accent-primary: #14b8a6;
+            --accent-primary-hover: #0d9488;
+            --accent-secondary: #fbbf24;
+            --accent-gradient: linear-gradient(135deg, #14b8a6, #2dd4bf);
+            --border-color: rgba(51, 65, 85, 0.8);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.5);
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --hero-overlay: linear-gradient(135deg, rgba(15, 118, 110, 0.9), rgba(13, 148, 136, 0.8));
+            --card-bg: #1e293b;
+            --input-bg: #334155;
+            --input-border: #475569;
+            --tag-bg: rgba(20, 184, 166, 0.15);
+            --tag-text: #2dd4bf;
+            --star-color: #fbbf24;
+            --footer-bg: #020617;
+            --footer-text: #94a3b8;
+            --footer-heading: #f1f5f9;
+        }
 
-        <!-- Why Choose Us -->
-        <section class="why-us section">
-            <div class="container">
-                <h2 class="section__title" data-lang="why_title">Nega bizni tanlashadi?</h2>
-                <div class="why-us__grid">
-                    <div class="why-card">
-                        <i class="fas fa-shield-alt why-card__icon"></i>
-                        <h3 data-lang="why_safety">100% Xavfsizlik</h3>
-                        <p data-lang="why_safety_desc">24/7 qo'riqlash tizimi va videokuzatuv</p>
-                    </div>
-                    <div class="why-card">
-                        <i class="fas fa-wifi why-card__icon"></i>
-                        <h3 data-lang="why_wifi">Bepul Wi-Fi</h3>
-                        <p data-lang="why_wifi_desc">Yuqori tezlikdagi internet</p>
-                    </div>
-                    <div class="why-card">
-                        <i class="fas fa-concierge-bell why-card__icon"></i>
-                        <h3 data-lang="why_service">Premium xizmat</h3>
-                        <p data-lang="why_service_desc">24/7 xona xizmati</p>
-                    </div>
-                    <div class="why-card">
-                        <i class="fas fa-map-marker-alt why-card__icon"></i>
-                        <h3 data-lang="why_location">Qulay joylashuv</h3>
-                        <p data-lang="why_location_desc">Shahar markazida</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        /* ============ Reset & Base ============ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <!-- Rooms -->
-        <section class="rooms section" id="rooms">
-            <div class="container">
-                <h2 class="section__title" data-lang="rooms_title">Xonalar paketi</h2>
-                <div class="rooms__grid">
-                    <div class="room-card">
-                        <div class="room-card__image">
-                            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600" alt="Standard">
-                            <span class="room-card__badge">Standard</span>
-                        </div>
-                        <div class="room-card__content">
-                            <h3>Standart xona</h3>
-                            <ul class="room-card__features">
-                                <li><i class="fas fa-check"></i> Bepul Wi-Fi</li>
-                                <li><i class="fas fa-check"></i> Televizor</li>
-                                <li><i class="fas fa-check"></i> Konditsioner</li>
-                            </ul>
-                            <div class="room-card__price">$100 <span>/ kecha</span></div>
-                            <button class="btn btn--primary book-room" data-room="Standard">Bron qilish</button>
-                        </div>
-                    </div>
-                    
-                    <div class="room-card room-card--featured">
-                        <div class="room-card__image">
-                            <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600" alt="VIP">
-                            <span class="room-card__badge">VIP</span>
-                        </div>
-                        <div class="room-card__content">
-                            <h3>VIP xona</h3>
-                            <ul class="room-card__features">
-                                <li><i class="fas fa-check"></i> Bepul Wi-Fi</li>
-                                <li><i class="fas fa-check"></i> Televizor</li>
-                                <li><i class="fas fa-check"></i> Konditsioner</li>
-                                <li><i class="fas fa-check"></i> Mini-bar</li>
-                                <li><i class="fas fa-check"></i> Shahar manzarasi</li>
-                            </ul>
-                            <div class="room-card__price">$200 <span>/ kecha</span></div>
-                            <button class="btn btn--primary book-room" data-room="VIP">Bron qilish</button>
-                        </div>
-                    </div>
-                    
-                    <div class="room-card">
-                        <div class="room-card__image">
-                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600" alt="Premium">
-                            <span class="room-card__badge">Premium</span>
-                        </div>
-                        <div class="room-card__content">
-                            <h3>Premium xona</h3>
-                            <ul class="room-card__features">
-                                <li><i class="fas fa-check"></i> Bepul Wi-Fi</li>
-                                <li><i class="fas fa-check"></i> Smart TV</li>
-                                <li><i class="fas fa-check"></i> Konditsioner</li>
-                                <li><i class="fas fa-check"></i> Mini-bar</li>
-                                <li><i class="fas fa-check"></i> Jakuzi</li>
-                                <li><i class="fas fa-check"></i> Nonushta kiritilgan</li>
-                            </ul>
-                            <div class="room-card__price">$350 <span>/ kecha</span></div>
-                            <button class="btn btn--primary book-room" data-room="Premium">Bron qilish</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
 
-        <!-- Amenities -->
-        <section class="amenities section" id="amenities">
-            <div class="container">
-                <h2 class="section__title" data-lang="amenities_title">Mehmonxonadagi qulayliklar</h2>
-                <div class="amenities__grid">
-                    <div class="amenity-card"><i class="fas fa-swimming-pool"></i><h3>Basseyn</h3></div>
-                    <div class="amenity-card"><i class="fas fa-spa"></i><h3>Spa markazi</h3></div>
-                    <div class="amenity-card"><i class="fas fa-dumbbell"></i><h3>Fitnes zal</h3></div>
-                    <div class="amenity-card"><i class="fas fa-utensils"></i><h3>Restoran</h3></div>
-                    <div class="amenity-card"><i class="fas fa-parking"></i><h3>Bepul parking</h3></div>
-                    <div class="amenity-card"><i class="fas fa-baby"></i><h3>Bolalar maydonchasi</h3></div>
-                </div>
-            </div>
-        </section>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
 
-        <!-- Staff -->
-        <section class="staff section">
-            <div class="container">
-                <h2 class="section__title" data-lang="staff_title">Bizning jamoa</h2>
-                <div class="staff__grid">
-                    <div class="staff-card">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Staff">
-                        <h3>Anna Petrova</h3>
-                        <p>Bosh menejer</p>
-                    </div>
-                    <div class="staff-card">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" alt="Staff">
-                        <h3>John Smith</h3>
-                        <p>Administrator</p>
-                    </div>
-                    <div class="staff-card">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400" alt="Staff">
-                        <h3>Maria Garcia</h3>
-                        <p>Bosh oshpaz</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
 
-        <!-- Reviews -->
-        <section class="reviews section" id="reviews">
-            <div class="container">
-                <h2 class="section__title" data-lang="reviews_title">Mijozlar sharhlari</h2>
-                <div class="swiper reviews-swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><div class="review-card"><div class="review-card__stars">★★★★★</div><p>"Ajoyib mehmonxona!"</p><div class="review-card__author"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt=""><span>Dilshod Karimov</span></div></div></div>
-                        <div class="swiper-slide"><div class="review-card"><div class="review-card__stars">★★★★★</div><p>"Premium xonada qoldik, juda ajoyib."</p><div class="review-card__author"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt=""><span>Alex Johnson</span></div></div></div>
-                        <div class="swiper-slide"><div class="review-card"><div class="review-card__stars">★★★★★</div><p>"Oilaviy dam olish uchun eng yaxshi joy."</p><div class="review-card__author"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt=""><span>Nilufar Azimova</span></div></div></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </section>
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-        <!-- Map -->
-        <section class="map section" id="location">
-            <div class="container">
-                <h2 class="section__title" data-lang="map_title">Bizning manzil</h2>
-                <div class="map__container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.802434245326!2d69.2400733154257!3d41.29950897927228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9b5%3A0xa5c0e3e2d0424c2!2sAmir%20Temur%20Square!5e0!3m2!1sen!2s!4v1635950000000!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </section>
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
-        <!-- Booking Form -->
-        <section class="booking section" id="booking">
-            <div class="container">
-                <h2 class="section__title" data-lang="booking_title">Buyurtma berish</h2>
-                <form class="booking__form" id="booking-form">
-                    <div class="form__group">
-                        <label for="name">Ism Familiya *</label>
-                        <input type="text" id="name" required placeholder="Ismingizni kiriting">
-                    </div>
-                    <div class="form__group">
-                        <label for="phone">Telefon raqam *</label>
-                        <input type="tel" id="phone" required placeholder="+998901234567">
-                    </div>
-                    <div class="form__group">
-                        <label for="room-type">Xona turi *</label>
-                        <select id="room-type" required>
-                            <option value="">Xonani tanlang</option>
-                            <option value="Standard">Standard</option>
-                            <option value="VIP">VIP</option>
-                            <option value="Premium">Premium</option>
-                        </select>
-                    </div>
-                    <div class="form__row">
-                        <div class="form__group">
-                            <label for="check-in">Kelish sanasi *</label>
-                            <input type="datetime-local" id="check-in" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="check-out">Ketish sanasi *</label>
-                            <input type="datetime-local" id="check-out" required>
-                        </div>
-                    </div>
-                    <div class="form__group">
-                        <label for="comment">Izoh</label>
-                        <textarea id="comment" rows="4" placeholder="Qo'shimcha ma'lumotlar..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn--primary btn--block">Buyurtma berish</button>
-                </form>
-                <div id="form-message" style="display:none; margin-top: 20px; padding: 15px; border-radius: 10px; text-align: center; font-weight: 600;"></div>
-            </div>
-        </section>
-    </main>
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__col">
-                    <h3>Marjon Hotel</h3>
-                    <p>Premium darajadagi mehmonxona</p>
-                </div>
-                <div class="footer__col">
-                    <h4>Aloqa</h4>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +998 90 123 45 67</li>
-                        <li><i class="fas fa-envelope"></i> info@marjonhotel.uz</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Toshkent sh., Amir Temur ko'chasi, 15</li>
-                    </ul>
-                </div>
-                <div class="footer__col">
-                    <h4>Ijtimoiy tarmoqlar</h4>
-                    <div class="footer__social">
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p>&copy; 2026 Marjon Hotel. Barcha huquqlar himoyalangan.</p>
-            </div>
-        </div>
-    </footer>
+        /* ============ Utility Classes ============ */
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 16px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="lang.js"></script>
-    <script src="script.js"></script>
-</body>
-                            </html>
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(13, 148, 136, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(13, 148, 136, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+        }
+
+        .btn-outline:hover {
+            background: #ffffff;
+            color: var(--accent-primary);
+        }
+
+        /* ============ Theme Toggle ============ */
+        .theme-toggle {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ============ Language Switcher ============ */
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: transparent;
+            border: 1.5px solid var(--border-color);
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: var(--accent-primary);
+            color: #ffffff;
+            border-color: var(--accent-primary);
+        }
+
+        .lang-btn:hover:not(.active) {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* ============ Header / Navigation ============ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            padding: 10px 0;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* ============ Hero Section ============ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: var(--hero-overlay), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f0fdfa" width="1200" height="800"/><circle cx="200" cy="150" r="80" fill="%23ccfbf1" opacity="0.6"/><circle cx="950" cy="600" r="120" fill="%23ccfbf1" opacity="0.5"/><circle cx="600" cy="400" r="200" fill="%23f0fdfa" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 120px 0 80px;
+        }
+
+        [data-theme="dark"] .hero {
+            background: var(--hero-overlay), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%230f172a" width="1200" height="800"/><circle cx="200" cy="150" r="80" fill="%231e293b" opacity="0.6"/><circle cx="950" cy="600" r="120" fill="%231e293b" opacity="0.5"/><circle cx="600" cy="400" r="200" fill="%231e293b" opacity="0.4"/></svg>');
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: #ffffff;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 36px;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ============ Advantages ============ */
+        .advantages {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            transition: background-color 0.4s ease;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .advantage-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 36px 28px;
+           
