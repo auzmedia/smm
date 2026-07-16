@@ -399,4 +399,1259 @@
             border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 36px 28px;
-           
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-primary);
+        }
+
+        .advantage-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .advantage-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(20, 184, 166, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--accent-primary);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .advantage-card:hover .advantage-icon {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .advantage-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .advantage-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ============ Services ============ */
+        .services {
+            padding: 100px 0;
+            background: var(--bg-primary);
+            transition: background-color 0.4s ease;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-glass);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            background: var(--bg-glass-hover);
+        }
+
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.12), rgba(20, 184, 166, 0.06));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--accent-primary);
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            box-shadow: 0 12px 30px rgba(13, 148, 136, 0.35);
+        }
+
+        .service-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .service-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ============ Team ============ */
+        .team {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            transition: background-color 0.4s ease;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            text-align: center;
+            padding: 32px 20px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ccfbf1, #f0fdfa);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent-primary);
+            border: 4px solid var(--accent-primary);
+        }
+
+        .team-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .team-role {
+            color: var(--accent-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .team-exp {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ============ Certificates ============ */
+        .certificates {
+            padding: 100px 0;
+            background: var(--bg-primary);
+            transition: background-color 0.4s ease;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px dashed var(--border-color);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .cert-card:hover {
+            border-color: var(--accent-primary);
+            border-style: solid;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+        }
+
+        .cert-text {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* ============ Reviews ============ */
+        .reviews {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            transition: background-color 0.4s ease;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .review-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 32px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .review-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .review-stars {
+            color: var(--star-color);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* ============ FAQ ============ */
+        .faq {
+            padding: 100px 0;
+            background: var(--bg-primary);
+            transition: background-color 0.4s ease;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--accent-primary);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 24px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 24px 20px;
+        }
+
+        /* ============ Contact Form ============ */
+        .contact-form-section {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            transition: background-color 0.4s ease;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .form-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 48px 36px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1.5px solid var(--input-border);
+            background: var(--input-bg);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            color: var(--text-primary);
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.1);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            background: var(--accent-gradient);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(13, 148, 136, 0.3);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(13, 148, 136, 0.45);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success i {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* Map */
+        .map-container {
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            height: 100%;
+            min-height: 500px;
+            background: var(--input-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 40px;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+            color: var(--accent-primary);
+        }
+
+        /* ============ Contacts ============ */
+        .contacts {
+            padding: 80px 0;
+            background: var(--bg-primary);
+            transition: background-color 0.4s ease;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 14px;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .contact-value {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            border-color: transparent;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(13, 148, 136, 0.35);
+        }
+
+        /* ============ Footer ============ */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 28px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--accent-primary);
+            text-decoration: underline;
+        }
+
+        /* ============ Animations ============ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============ Mobile Navigation ============ */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 380px;
+            height: 100vh;
+            background: var(--bg-glass);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 2000;
+            padding: 80px 32px 32px;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 1px solid var(--border-color);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mobile-nav-links a {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: var(--transition);
+            display: block;
+            padding: 10px 0;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* ============ Responsive ============ */
+        @media (max-width: 1024px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .map-container {
+                min-height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .advantages-grid,
+            .services-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .certs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contacts-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid,
+            .certs-grid,
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .hero {
+                padding: 100px 0 60px;
+            }
+            .form-card {
+                padding: 28px 20px;
+            }
+            .theme-toggle {
+                bottom: 20px;
+                right: 20px;
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#" class="logo">SmileGallery</a>
+            <nav class="nav">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#advantages" data-i18n="nav.about">О клинике</a></li>
+                    <li><a href="#services" data-i18n="nav.services">Услуги</a></li>
+                    <li><a href="#team" data-i18n="nav.team">Специалисты</a></li>
+                    <li><a href="#reviews" data-i18n="nav.reviews">Отзывы</a></li>
+                    <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+                    <li><a href="#contacts" data-i18n="nav.contacts">Контакты</a></li>
+                </ul>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="uz">UZ</button>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-close" id="mobileClose">&times;</button>
+        <ul class="mobile-nav-links">
+            <li><a href="#advantages" data-i18n="nav.about">О клинике</a></li>
+            <li><a href="#services" data-i18n="nav.services">Услуги</a></li>
+            <li><a href="#team" data-i18n="nav.team">Специалисты</a></li>
+            <li><a href="#reviews" data-i18n="nav.reviews">Отзывы</a></li>
+            <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+            <li><a href="#contacts" data-i18n="nav.contacts">Контакты</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span data-i18n="hero.badge">⭐ 4.9 рейтинг на 2ГИС</span>
+                </div>
+                <h1 class="hero-title" data-i18n="hero.title">Галерея Улыбок</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Премиальная стоматология в центре города. Современное оборудование, опытные врачи и индивидуальный подход к каждому пациенту.</p>
+                <div class="hero-buttons">
+                    <a href="#contact-form" class="btn btn-primary" data-i18n="hero.cta">Записаться на приём</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages" id="advantages">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="advantages.title">Почему выбирают нас</h2>
+            <p class="section-subtitle animate-on-scroll">6 причин доверить здоровье вашей улыбки профессионалам</p>
+            <div class="advantages-grid" id="advantagesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="services.title">Наши услуги</h2>
+            <p class="section-subtitle animate-on-scroll">Полный спектр стоматологических услуг для всей семьи</p>
+            <div class="services-grid" id="servicesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="team.title">Наша команда</h2>
+            <p class="section-subtitle animate-on-scroll">Опытные специалисты, которым вы можете доверять</p>
+            <div class="team-grid" id="teamGrid"></div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="certificates" id="certificates">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="certificates.title">Наши сертификаты и лицензии</h2>
+            <p class="section-subtitle animate-on-scroll">Мы работаем официально и гарантируем качество</p>
+            <div class="certs-grid">
+                <div class="cert-card animate-on-scroll">
+                    <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                    <p class="cert-text">Лицензия на медицинскую деятельность</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <div class="cert-icon"><i class="fas fa-award"></i></div>
+                    <p class="cert-text">Сертификат ISO 9001:2015</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <div class="cert-icon"><i class="fas fa-shield-virus"></i></div>
+                    <p class="cert-text">Сертификат стерилизации</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <div class="cert-icon"><i class="fas fa-star"></i></div>
+                    <p class="cert-text">Сертификат Nobel Biocare</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="reviews.title">Отзывы наших пациентов</h2>
+            <p class="section-subtitle animate-on-scroll">Более 500 довольных пациентов в этом году</p>
+            <div class="reviews-grid" id="reviewsGrid"></div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="faq.title">Часто задаваемые вопросы</h2>
+            <p class="section-subtitle animate-on-scroll">Ответы на самые популярные вопросы</p>
+            <div class="faq-list" id="faqList"></div>
+        </div>
+    </section>
+
+    <!-- Contact Form + Map -->
+    <section class="contact-form-section" id="contact-form">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="form-card animate-on-scroll">
+                    <h2 class="section-title" style="text-align:left; font-size:2rem;" data-i18n="form.title">Запишитесь на приём</h2>
+                    <p style="color:var(--text-secondary); margin-bottom:28px;" data-i18n="form.subtitle">Оставьте заявку, и мы перезвоним вам в течение 5 минут</p>
+                    <form id="appointmentForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name" data-i18n="form.name">Ваше имя</label>
+                            <input type="text" id="name" class="form-input" required placeholder="Иван Иванов">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone" data-i18n="form.phone">Ваш телефон</label>
+                            <input type="tel" id="phone" class="form-input" required placeholder="+7 (___) ___-__-__">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="service" data-i18n="form.service">Выберите услугу</label>
+                            <select id="service" class="form-select" required>
+                                <option value="" data-i18n="form.service">Выберите услугу</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="form-submit" data-i18n="form.button">Записаться</button>
+                    </form>
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-i18n="form.success">Спасибо! Мы свяжемся с вами в ближайшее время.</span>
+                    </div>
+                </div>
+                <div class="map-container animate-on-scroll">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p style="font-weight:600; font-size:1.1rem;">2ГИС Карта</p>
+                        <p style="font-size:0.9rem;">г. Москва, ул. Примерная, д. 123</p>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">Интерактивная карта загружается здесь</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-i18n="contacts.title">Контакты</h2>
+            <p class="section-subtitle animate-on-scroll">Мы находимся в центре города, удобный подъезд и парковка</p>
+            <div class="contacts-grid">
+                <div class="contact-card animate-on-scroll">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <p class="contact-label">Адрес</p>
+                    <p class="contact-value" data-i18n="contacts.address">г. Москва, ул. Примерная, д. 123</p>
+                </div>
+                <div class="contact-card animate-on-scroll">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <p class="contact-label">Телефон</p>
+                    <p class="contact-value" data-i18n="contacts.phone">+7 (495) 123-45-67</p>
+                </div>
+                <div class="contact-card animate-on-scroll">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <p class="contact-label">Email</p>
+                    <p class="contact-value" data-i18n="contacts.email">info@smile-gallery.ru</p>
+                </div>
+                <div class="contact-card animate-on-scroll">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <p class="contact-label">Режим работы</p>
+                    <p class="contact-value" data-i18n="contacts.hours">Пн-Сб: 9:00 - 21:00</p>
+                    <p class="contact-value" data-i18n="contacts.hours_detail">Воскресенье: 10:00 - 18:00</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-link" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link" aria-label="VK"><i class="fab fa-vk"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-i18n="footer.copyright">© 2024 Галерея Улыбок. Все права защищены.</p>
+            <p style="margin-top:4px;"><a href="#" data-i18n="footer.privacy">Политика конфиденциальности</a></p>
+        </div>
+    </footer>
+
+    <!-- lang.js -->
+    <script src="lang.js"></script>
+
+    <!-- Main JavaScript -->
+    <script>
+        (function() {
+            // ============ State ============
+            let currentLang = localStorage.getItem('lang') || 'ru';
+            let currentTheme = localStorage.getItem('theme') || 'light';
+
+            // ============ DOM References ============
+            const header = document.getElementById('header');
+            const themeToggle = document.getElementById('themeToggle');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileClose = document.getElementById('mobileClose');
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('overlay');
+            const langBtns = document.querySelectorAll('.lang-btn');
+            const appointmentForm = document.getElementById('appointmentForm');
+            const formSuccess = document.getElementById('formSuccess');
+
+            // ============ Theme ============
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                const icon = themeToggle.querySelector('i');
+                if (theme === 'dark') {
+                    icon.className = 'fas fa-sun';
+                } else {
+                    icon.className = 'fas fa-moon';
+                }
+                localStorage.setItem('theme', theme);
+                currentTheme = theme;
+            }
+
+            applyTheme(currentTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(newTheme);
+            });
+
+            // ============ Language ============
+            function getTranslation(path) {
+                const keys = path.split('.');
+                let result = translations[currentLang];
+                for (const key of keys) {
+                    if (result && result[key] !== undefined) {
+                        result = result[key];
+                    } else {
+                        return path;
+                    }
+                }
+                return result;
+            }
+
+            function updateContent() {
+                // Update all elements with data-i18n attribute
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const path = el.getAttribute('data-i18n');
+                    const translation = getTranslation(path);
+                    if (typeof translation === 'string') {
+                        // For select options, only update if it's the default option
+                        if (el.tagName === 'OPTION' && el.value === '') {
+                            el.textContent = translation;
+                        } else if (el.tagName !== 'OPTION') {
+                            el.textContent = translation;
+                        }
+                    }
+                });
+
+                // Update placeholders
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                    const path = el.getAttribute('data-i18n-placeholder');
+                    el.placeholder = getTranslation(path);
+                });
+
+                // Rebuild dynamic sections
+                renderAdvantages();
+                renderServices();
+                renderTeam();
+                renderReviews();
+                renderFAQ();
+                renderServiceOptions();
+            }
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('lang', lang);
+                document.documentElement.lang = lang;
+
+                // Update lang buttons
+                langBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+
+                updateContent();
+            }
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setLanguage(btn.getAttribute('data-lang'));
+                });
+            });
+
+            // ============ Dynamic Rendering Functions ============
+            function renderAdvantages() {
+                const grid = document.getElementById('advantagesGrid');
+                const items = translations[currentLang].advantages.items;
+                grid.innerHTML = items.map((item, i) => `
+                    <div class="advantage-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
+                        <div class="advantage-icon"><i class="fas ${item.icon}"></i></div>
+                        <h3 class="advantage-title">${item.title}</h3>
+                        <p class="advantage-desc">${item.desc}</p>
+                    </div>
+                `).join('');
+                observeAnimatedElements();
+            }
+
+            function renderServices() {
+                const grid = document.getElementById('servicesGrid');
+                const items = translations[currentLang].services.items;
+                grid.innerHTML = items.map((item, i) => `
+                    <div class="service-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
+                        <div class="service-icon"><i class="fas ${item.icon}"></i></div>
+                        <h3 class="service-title">${item.title}</h3>
+                        <p class="service-desc">${item.desc}</p>
+                    </div>
+                `).join('');
+                observeAnimatedElements();
+            }
+
+            function renderTeam() {
+                const grid = document.getElementById('teamGrid');
+                const members = translations[currentLang].team.members;
+                grid.innerHTML = members.map((member, i) => `
+                    <div class="team-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
+                        <div class="team-avatar"><i class="fas fa-user-md"></i></div>
+                        <h3 class="team-name">${member.name}</h3>
+                        <p class="team-role">${member.role}</p>
+                        <p class="team-exp">${member.exp}</p>
+                    </div>
+                `).join('');
+                observeAnimatedElements();
+            }
+
+            function renderReviews() {
+                const grid = document.getElementById('reviewsGrid');
+                const items = translations[currentLang].reviews.items;
+                grid.innerHTML = items.map((item, i) => `
+                    <div class="review-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
+                        <div class="review-stars">${'★'.repeat(item.rating)}${'☆'.repeat(5 - item.rating)}</div>
+                        <p class="review-text">"${item.text}"</p>
+                        <p class="review-author">— ${item.name}</p>
+                    </div>
+                `).join('');
+                observeAnimatedElements();
+            }
+
+            function renderFAQ() {
+                const list = document.getElementById('faqList');
+                const items = translations[currentLang].faq.items;
+                list.innerHTML = items.map((item, i) => `
+                    <div class="faq-item animate-on-scroll">
+                        <div class="faq-question">
+                            <span>${item.q}</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>${item.a}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Re-attach FAQ click handlers
+                list.querySelectorAll('.faq-question').forEach(q => {
+                    q.addEventListener('click', function() {
+                        const item = this.parentElement;
+                        const wasActive = item.classList.contains('active');
+                        // Close all
+                        list.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                        // Open clicked if wasn't active
+                        if (!wasActive) {
+                            item.classList.add('active');
+                        }
+                    });
+                });
+                observeAnimatedElements();
+            }
+
+            function renderServiceOptions() {
+                const select = document.getElementById('service');
+                const services = translations[currentLang].form.services;
+                const defaultOption = select.querySelector('option[value=""]');
+                const existingOptions = select.querySelectorAll('option:not([value=""])');
+                existingOptions.forEach(opt => opt.remove());
+
+                if (defaultOption) {
+                    defaultOption.textContent = getTranslation('form.service');
+                }
+
+                services.forEach(service => {
+                    const option = document.createElement('option');
+                    option.value = service;
+                    option.textContent = service;
+                    select.appendChild(option);
+                });
+            }
+
+            // ============ Scroll Animation Observer ============
+            function observeAnimatedElements() {
+                const elements = document.querySelectorAll('.animate-on-scroll:not(.observed)');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            entry.target.classList.add('observed');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                elements.forEach(el => observer.observe(el));
+            }
+
+            // ============ Header Scroll Effect ============
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+            // ============ Mobile Menu ============
+            function openMobileMenu() {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+            mobileClose.addEventListener('click', closeMobileMenu);
+            overlay.addEventListener('click', closeMobileMenu);
+
+            // Close mobile menu when clicking on links
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // ============ Smooth Scroll for Anchor Links ============
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const headerHeight = header.offsetHeight + 16;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // ============ Form Submission ============
+            appointmentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const service = document.getElementById('service').value;
+
+                if (name && phone && service) {
+                    // Simulate submission
+                    appointmentForm.style.display = 'none';
+                    formSuccess.classList.add('show');
+
+                    // Reset after delay
+                    setTimeout(() => {
+                        appointmentForm.style.display = 'block';
+                        formSuccess.classList.remove('show');
+                        appointmentForm.reset();
+                    }, 5000);
+
+                    // Here you would send data to server
+                    console.log('Form submitted:', { name, phone, service });
+                }
+            });
+
+            // ============ Initialize ============
+            function init() {
+                setLanguage(currentLang);
+                updateContent();
+                observeAnimatedElements();
+                handleScroll();
+            }
+
+            // Run on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+</html>
