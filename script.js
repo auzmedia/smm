@@ -29,7 +29,7 @@
 
             applyTheme(currentTheme);
 
-            themeToggle.addEventListener('click', () => {
+            themeToggle.addEventListener('click', function() {
                 const newTheme = currentTheme === 'light' ? 'dark' : 'light';
                 applyTheme(newTheme);
             });
@@ -38,9 +38,9 @@
             function getTranslation(path) {
                 const keys = path.split('.');
                 let result = translations[currentLang];
-                for (const key of keys) {
-                    if (result && result[key] !== undefined) {
-                        result = result[key];
+                for (let i = 0; i < keys.length; i++) {
+                    if (result && result[keys[i]] !== undefined) {
+                        result = result[keys[i]];
                     } else {
                         return path;
                     }
@@ -50,7 +50,8 @@
 
             function updateContent() {
                 // Update all elements with data-i18n attribute
-                document.querySelectorAll('[data-i18n]').forEach(el => {
+                const i18nElements = document.querySelectorAll('[data-i18n]');
+                i18nElements.forEach(function(el) {
                     const path = el.getAttribute('data-i18n');
                     const translation = getTranslation(path);
                     if (typeof translation === 'string') {
@@ -61,12 +62,6 @@
                             el.textContent = translation;
                         }
                     }
-                });
-
-                // Update placeholders
-                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                    const path = el.getAttribute('data-i18n-placeholder');
-                    el.placeholder = getTranslation(path);
                 });
 
                 // Rebuild dynamic sections
@@ -84,15 +79,19 @@
                 document.documentElement.lang = lang;
 
                 // Update lang buttons
-                langBtns.forEach(btn => {
-                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                langBtns.forEach(function(btn) {
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
                 });
 
                 updateContent();
             }
 
-            langBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
+            langBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
                     setLanguage(btn.getAttribute('data-lang'));
                 });
             });
@@ -101,78 +100,104 @@
             function renderAdvantages() {
                 const grid = document.getElementById('advantagesGrid');
                 const items = translations[currentLang].advantages.items;
-                grid.innerHTML = items.map((item, i) => `
-                    <div class="advantage-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
-                        <div class="advantage-icon"><i class="fas ${item.icon}"></i></div>
-                        <h3 class="advantage-title">${item.title}</h3>
-                        <p class="advantage-desc">${item.desc}</p>
-                    </div>
-                `).join('');
+                let html = '';
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    html += '<div class="advantage-card animate-on-scroll" style="animation-delay:' + (i * 0.1) + 's">';
+                    html += '<div class="advantage-icon"><i class="fas ' + item.icon + '"></i></div>';
+                    html += '<h3 class="advantage-title">' + item.title + '</h3>';
+                    html += '<p class="advantage-desc">' + item.desc + '</p>';
+                    html += '</div>';
+                }
+                grid.innerHTML = html;
                 observeAnimatedElements();
             }
 
             function renderServices() {
                 const grid = document.getElementById('servicesGrid');
                 const items = translations[currentLang].services.items;
-                grid.innerHTML = items.map((item, i) => `
-                    <div class="service-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
-                        <div class="service-icon"><i class="fas ${item.icon}"></i></div>
-                        <h3 class="service-title">${item.title}</h3>
-                        <p class="service-desc">${item.desc}</p>
-                    </div>
-                `).join('');
+                let html = '';
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    html += '<div class="service-card animate-on-scroll" style="animation-delay:' + (i * 0.1) + 's">';
+                    html += '<div class="service-icon"><i class="fas ' + item.icon + '"></i></div>';
+                    html += '<h3 class="service-title">' + item.title + '</h3>';
+                    html += '<p class="service-desc">' + item.desc + '</p>';
+                    html += '</div>';
+                }
+                grid.innerHTML = html;
                 observeAnimatedElements();
             }
 
             function renderTeam() {
                 const grid = document.getElementById('teamGrid');
                 const members = translations[currentLang].team.members;
-                grid.innerHTML = members.map((member, i) => `
-                    <div class="team-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
-                        <div class="team-avatar"><i class="fas fa-user-md"></i></div>
-                        <h3 class="team-name">${member.name}</h3>
-                        <p class="team-role">${member.role}</p>
-                        <p class="team-exp">${member.exp}</p>
-                    </div>
-                `).join('');
+                let html = '';
+                for (let i = 0; i < members.length; i++) {
+                    const member = members[i];
+                    html += '<div class="team-card animate-on-scroll" style="animation-delay:' + (i * 0.1) + 's">';
+                    html += '<div class="team-avatar"><i class="fas fa-user-md"></i></div>';
+                    html += '<h3 class="team-name">' + member.name + '</h3>';
+                    html += '<p class="team-role">' + member.role + '</p>';
+                    html += '<p class="team-exp">' + member.exp + '</p>';
+                    html += '</div>';
+                }
+                grid.innerHTML = html;
                 observeAnimatedElements();
             }
 
             function renderReviews() {
                 const grid = document.getElementById('reviewsGrid');
                 const items = translations[currentLang].reviews.items;
-                grid.innerHTML = items.map((item, i) => `
-                    <div class="review-card animate-on-scroll" style="animation-delay:${i * 0.1}s">
-                        <div class="review-stars">${'★'.repeat(item.rating)}${'☆'.repeat(5 - item.rating)}</div>
-                        <p class="review-text">"${item.text}"</p>
-                        <p class="review-author">— ${item.name}</p>
-                    </div>
-                `).join('');
+                let html = '';
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    let starsHtml = '';
+                    for (let s = 0; s < item.rating; s++) {
+                        starsHtml += '★';
+                    }
+                    for (let s = item.rating; s < 5; s++) {
+                        starsHtml += '☆';
+                    }
+                    html += '<div class="review-card animate-on-scroll" style="animation-delay:' + (i * 0.1) + 's">';
+                    html += '<div class="review-stars">' + starsHtml + '</div>';
+                    html += '<p class="review-text">"' + item.text + '"</p>';
+                    html += '<p class="review-author">— ' + item.name + '</p>';
+                    html += '</div>';
+                }
+                grid.innerHTML = html;
                 observeAnimatedElements();
             }
 
             function renderFAQ() {
                 const list = document.getElementById('faqList');
                 const items = translations[currentLang].faq.items;
-                list.innerHTML = items.map((item, i) => `
-                    <div class="faq-item animate-on-scroll">
-                        <div class="faq-question">
-                            <span>${item.q}</span>
-                            <i class="fas fa-chevron-down faq-icon"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>${item.a}</p>
-                        </div>
-                    </div>
-                `).join('');
+                let html = '';
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    html += '<div class="faq-item animate-on-scroll">';
+                    html += '<div class="faq-question">';
+                    html += '<span>' + item.q + '</span>';
+                    html += '<i class="fas fa-chevron-down faq-icon"></i>';
+                    html += '</div>';
+                    html += '<div class="faq-answer">';
+                    html += '<p>' + item.a + '</p>';
+                    html += '</div>';
+                    html += '</div>';
+                }
+                list.innerHTML = html;
 
                 // Re-attach FAQ click handlers
-                list.querySelectorAll('.faq-question').forEach(q => {
+                const questions = list.querySelectorAll('.faq-question');
+                questions.forEach(function(q) {
                     q.addEventListener('click', function() {
                         const item = this.parentElement;
                         const wasActive = item.classList.contains('active');
                         // Close all
-                        list.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                        const allItems = list.querySelectorAll('.faq-item');
+                        allItems.forEach(function(el) {
+                            el.classList.remove('active');
+                        });
                         // Open clicked if wasn't active
                         if (!wasActive) {
                             item.classList.add('active');
@@ -187,25 +212,27 @@
                 const services = translations[currentLang].form.services;
                 const defaultOption = select.querySelector('option[value=""]');
                 const existingOptions = select.querySelectorAll('option:not([value=""])');
-                existingOptions.forEach(opt => opt.remove());
+                existingOptions.forEach(function(opt) {
+                    opt.remove();
+                });
 
                 if (defaultOption) {
                     defaultOption.textContent = getTranslation('form.service');
                 }
 
-                services.forEach(service => {
+                for (let i = 0; i < services.length; i++) {
                     const option = document.createElement('option');
-                    option.value = service;
-                    option.textContent = service;
+                    option.value = services[i];
+                    option.textContent = services[i];
                     select.appendChild(option);
-                });
+                }
             }
 
             // ============ Scroll Animation Observer ============
             function observeAnimatedElements() {
                 const elements = document.querySelectorAll('.animate-on-scroll:not(.observed)');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
                             entry.target.classList.add('observed');
@@ -217,7 +244,9 @@
                     rootMargin: '0px 0px -40px 0px'
                 });
 
-                elements.forEach(el => observer.observe(el));
+                elements.forEach(function(el) {
+                    observer.observe(el);
+                });
             }
 
             // ============ Header Scroll Effect ============
@@ -249,12 +278,14 @@
             overlay.addEventListener('click', closeMobileMenu);
 
             // Close mobile menu when clicking on links
-            mobileNav.querySelectorAll('a').forEach(link => {
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(function(link) {
                 link.addEventListener('click', closeMobileMenu);
             });
 
             // ============ Smooth Scroll for Anchor Links ============
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
+            allAnchorLinks.forEach(function(anchor) {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
@@ -284,14 +315,14 @@
                     formSuccess.classList.add('show');
 
                     // Reset after delay
-                    setTimeout(() => {
+                    setTimeout(function() {
                         appointmentForm.style.display = 'block';
                         formSuccess.classList.remove('show');
                         appointmentForm.reset();
                     }, 5000);
 
                     // Here you would send data to server
-                    console.log('Form submitted:', { name, phone, service });
+                    console.log('Form submitted:', { name: name, phone: phone, service: service });
                 }
             });
 
